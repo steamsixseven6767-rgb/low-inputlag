@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "lowinputlag",
-  "version": "${version}",
+  "version": "1.0.0",
   "name": "Low Input Lag",
-  "description": "fix inputlag"
+  "description": "fix inputlag",
   "authors": ["swortix aka luminate"],
   "license": "MIT",
   "environment": "client",
