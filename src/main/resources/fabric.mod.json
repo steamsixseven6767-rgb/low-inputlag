@@ -3,17 +3,22 @@
   "id": "lowinputlag",
   "version": "1.0.0",
   "name": "Low Input Lag",
-  "description": "fix inputlag",
-  "authors": ["swortix aka luminate"],
+  "description": "Applies camera look as late as possible in each frame to reduce camera input lag. Client-side only.",
+  "authors": ["you"],
   "license": "MIT",
   "environment": "client",
   "entrypoints": {
-    "client": ["dev.lowinputlag.LowInputLagMod"]
+    "client": ["dev.lowinputlag.LowInputLagMod"],
+    "modmenu": ["dev.lowinputlag.ModMenuIntegration"]
   },
   "mixins": ["lowinputlag.mixins.json"],
   "depends": {
     "fabricloader": ">=0.16.0",
     "minecraft": "~1.21.4",
     "java": ">=21"
+  },
+  "suggests": {
+    "modmenu": "*",
+    "cloth-config": "*"
   }
 }
