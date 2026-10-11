@@ -42,7 +42,7 @@ public abstract class GameRendererMixin {
             double dt = lowinputlag$lastNanos == 0L ? 0.0 : (now - lowinputlag$lastNanos) / 1.0e9;
             lowinputlag$lastNanos = now;
 
-            mc.mouse.updateMouse(dt);
+            ((MouseAccessor) mc.mouse).lowinputlag$callUpdateMouse(dt);
 
             if (cfg.debugLog && ++lowinputlag$counter % 300 == 0) {
                 LowInputLagMod.LOGGER.info("[lowinputlag] late-latch active, frame dt={} ms", dt * 1000.0);
