@@ -57,6 +57,14 @@ public final class LowInputLagConfigScreen {
                 .setSaveConsumer(v -> cfg.debugLog = v)
                 .build());
 
+        general.addEntry(eb.startFloatField(Text.literal("Задержка включения (сек)"), cfg.enableDelaySeconds)
+                .setDefaultValue(3.0f)
+                .setMin(0.0f)
+                .setMax(60.0f)
+                .setTooltip(Text.literal("Через сколько секунд после входа в мир мод включается сам."))
+                .setSaveConsumer(v -> cfg.enableDelaySeconds = v)
+                .build());
+
         return builder.build();
     }
 }
