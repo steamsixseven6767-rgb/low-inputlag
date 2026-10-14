@@ -2,6 +2,7 @@ package dev.lowinputlag.mixin;
 
 import dev.lowinputlag.LowInputLagConfig;
 import dev.lowinputlag.LowInputLagMod;
+import dev.lowinputlag.LowInputLagState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.GameRenderer;
 import org.lwjgl.glfw.GLFW;
@@ -25,7 +26,10 @@ public abstract class GameRendererMixin {
         if (lowinputlag$failed) return;
         try {
             LowInputLagConfig cfg = LowInputLagConfig.get();
-            if (!cfg.enabled || !cfg.applyEveryFrame) return;
+            if (!cfg.enabled || !cfg.applyEveryFrame || !LowInputLagState.isActive()) {
+                lowinputlag$lastNanos = 0L;
+                return;
+            }
 
             MinecraftClient mc = this.client;
             if (mc.player == null || mc.currentScreen != null
