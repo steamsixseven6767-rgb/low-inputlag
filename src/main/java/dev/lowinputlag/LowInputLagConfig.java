@@ -19,6 +19,8 @@ public final class LowInputLagConfig {
     public boolean pollEventsBeforeLook = true;
     public float sensitivityMultiplier = 1.0f;
     public boolean disableSmoothing = true;
+    /** Ask the driver for swap interval 0 while the mod is active. */
+    public boolean disableVsync = true;
     public boolean debugLog = false;
 
     public static LowInputLagConfig get() {
@@ -58,4 +60,4 @@ public final class LowInputLagConfig {
             LowInputLagMod.LOGGER.error("[{}] failed to write config", LowInputLagMod.MOD_ID, e);
         }
     }
-        }
+}
