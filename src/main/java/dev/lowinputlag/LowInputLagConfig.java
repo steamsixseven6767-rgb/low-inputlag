@@ -13,6 +13,8 @@ public final class LowInputLagConfig {
     private static LowInputLagConfig instance = new LowInputLagConfig();
 
     public boolean enabled = true;
+    /** Seconds after joining a world/server before the mod switches itself on. */
+    public float enableDelaySeconds = 3.0f;
     public boolean applyEveryFrame = true;
     public boolean pollEventsBeforeLook = true;
     public float sensitivityMultiplier = 1.0f;
@@ -42,6 +44,10 @@ public final class LowInputLagConfig {
             instance.sensitivityMultiplier = 1.0f;
         }
         instance.sensitivityMultiplier = Math.min(instance.sensitivityMultiplier, 10f);
+        if (Float.isNaN(instance.enableDelaySeconds) || instance.enableDelaySeconds < 0f) {
+            instance.enableDelaySeconds = 3.0f;
+        }
+        instance.enableDelaySeconds = Math.min(instance.enableDelaySeconds, 60f);
         save();
     }
 
@@ -52,4 +58,4 @@ public final class LowInputLagConfig {
             LowInputLagMod.LOGGER.error("[{}] failed to write config", LowInputLagMod.MOD_ID, e);
         }
     }
-}
+        }
