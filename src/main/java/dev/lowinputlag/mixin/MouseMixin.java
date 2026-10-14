@@ -2,6 +2,7 @@ package dev.lowinputlag.mixin;
 
 import dev.lowinputlag.LowInputLagConfig;
 import dev.lowinputlag.LowInputLagMod;
+import dev.lowinputlag.LowInputLagState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
 import org.spongepowered.asm.mixin.Final;
@@ -24,7 +25,7 @@ public abstract class MouseMixin {
         if (lowinputlag$failed) return;
         try {
             LowInputLagConfig cfg = LowInputLagConfig.get();
-            if (!cfg.enabled) return;
+            if (!cfg.enabled || !LowInputLagState.isActive()) return;
             if (!((Mouse) (Object) this).isCursorLocked()) return;
 
             if (cfg.disableSmoothing) {
